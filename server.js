@@ -13,7 +13,13 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+    {
+        origin: "https://cold-email-frontend.vercel.app",  // Fixed CORS configuration
+        methods: ['GET', 'POST'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+    }
+));
 
 // Routes
 app.use('/auth', authRoutes);
